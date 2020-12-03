@@ -1,7 +1,6 @@
 FROM python:3
 USER root
 WORKDIR /usr/src/app
-ADD requirements_20200731.txt /usr/src/app
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install --no-install-recommends -y \
     curl \
@@ -10,7 +9,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     git && \
     apt-get clean
 
-RUN pip install -r requirements_20200731.txt
+ADD . /usr/src/app
+RUN pip install -r requirements_test.txt
 
 RUN jupyter serverextension enable --py jupyterlab
 ENV DEBIAN_FRONTEND dialog

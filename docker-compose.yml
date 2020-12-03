@@ -1,31 +1,29 @@
 version: '3'
 services:
-  jupyterlab:
-    build:
-      context: .
-      dockerfile: "Dockerfile_JupyterLab"
-    user: root
-    volumes:
-      - jupyterlab-dir:/home/JupyterLab/codes   
-      - .:/usr/src/app
-    command: start.sh jupyter lab
+    jupyterlab:
+        build: ./
+        user: root
+        volumes:
+            - jupyterlab-dir:/home/JupyterLab/codes
+            - .:/usr/src/app
+        command: start.sh jupyter lab
+        ports:
+            - "8888:8888"
+        environment:
+            TZ: Asia/Tokyo
+        command:
+            jupyter lab
+            --ip=0.0.0.0
+            --allow-root
+            --no-browser
+            --NotebookApp.notebook_dir='/home/JupyterLab/codes'
+            --NotebookApp.token=''
 
-    ports:
-      - "8888:8888"
-    environment:
-      TZ: Asia/Tokyo
-    command:
-      jupyter lab
-          --ip=0.0.0.0
-          --allow-root
-          --no-browser
-          --NotebookApp.notebook_dir='/home/JupyterLab/codes'
-          --NotebookApp.token=''
 volumes:
-  jupyterlab-dir:
-    driver_opts:
-      type: none
-      device: /Users/koichi.takahashi/Documents/intern/regression/docker_intern
-      o: bind
+        jupyterlab-dir:
+            driver_opts:
+                type: none
+                device: /Users/takahiro.tsuchiya/JupyterLab/codes
+                o: bind
 
 
