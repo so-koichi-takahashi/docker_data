@@ -6,7 +6,7 @@ services:
       dockerfile: "Dockerfile_JupyterLab"
     user: root
     volumes:
-      - jupyterlab-dir:/home/JupyterLab/codes   
+      - jupyterlab-dir:/home/JupyterLab/codes
       - .:/usr/src/app
     command: start.sh jupyter lab
 
@@ -21,6 +21,8 @@ services:
           --no-browser
           --NotebookApp.notebook_dir='/home/JupyterLab/codes'
           --NotebookApp.token=''
+
+
 volumes:
   jupyterlab-dir:
     driver_opts:
