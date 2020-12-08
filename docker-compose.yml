@@ -1,12 +1,10 @@
 version: '3'
 services:
   jupyterlab:
-    build:
-      context: .
-      dockerfile: "Dockerfile_JupyterLab"
+    build: ./
     user: root
     volumes:
-      - jupyterlab-dir:/home/JupyterLab/codes
+      - ./JupyterLab/data:/home/JupyterLab/codes
       - .:/usr/src/app
     command: start.sh jupyter lab
 
@@ -21,13 +19,3 @@ services:
           --no-browser
           --NotebookApp.notebook_dir='/home/JupyterLab/codes'
           --NotebookApp.token=''
-
-
-volumes:
-  jupyterlab-dir:
-    driver_opts:
-      type: none
-      device: /Users/koichi.takahashi/Documents/intern/regression/docker_intern
-      o: bind
-
-
