@@ -5,22 +5,27 @@
 docker-compose up -d
 ```
 
-## コンテナ停止
+## dockerコンテナ停止
 ```
 docker-compose down
 ```
 
-## コンテナ破棄(コンテナ捨てる)
+## dockerコンテナ破棄(コンテナ捨てる)
 ```
 docker-compose down --rmi all
 ```
 
-## コンテナの中に入る(pipとか使える)
+## dockerコンテナの中に入る(pipとか使える)
 ```
 docker-compose exec jupyterlab bash
 ```
 
-## コンテナ確認
+## dockerコンテナの中から出る
+```
+exit
+```
+
+## dockerコンテナ確認
 ```
 docker-compose ps
 ```
